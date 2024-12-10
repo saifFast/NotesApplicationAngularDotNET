@@ -1,1 +1,35 @@
-<p>notes works!</p>
+<div class="container">
+    <!-- Header -->
+    <h1>My Notes</h1>
+  
+    <!-- Form to add a new note -->
+    <form (ngSubmit)="addNote()">
+      <!-- Title input -->
+      <input
+        type="text"
+        placeholder="Title"
+        [(ngModel)]="noteTitle"
+        name="title"
+        required
+      />
+      
+      <!-- Content textarea -->
+      <textarea
+        placeholder="Content"
+        [(ngModel)]="noteContent"
+        name="content"
+        required
+      ></textarea>
+  
+      <!-- Submit button -->
+      <button type="submit">Add Note</button>
+    </form>
+  
+    <!-- Notes listing -->
+    <div *ngFor="let note of notes" class="note">
+      <h3>{{ note.title }}</h3>
+      <p>{{ note.content }}</p>
+      <button (click)="deleteNote(note.id)">Delete</button>
+    </div>
+  </div>
+  
